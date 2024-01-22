@@ -1,0 +1,42 @@
+---
+title: Quickstart
+description: Get started with Turso and Python using the libSQL client in a few simple steps
+---
+
+In this Python quickstart we will learn how to:
+
+- Install the Python libSQL client
+- Connect to a remote Turso database
+- Execute a query using SQL
+
+<Steps>
+  <Step title="Install libsql-client library">
+
+    First begin by installing the `libsql-client` [library](https://pypi.org/project/libsql-client/):
+
+    ```python
+    pip3 install libsql-client
+    ```
+    </Step>
+
+    <Step title="Initialize a new client">
+
+    ```python
+    url = "libsql://"
+    client = libsql_client.create_client_sync(url, auth_token=token)
+    ```
+
+    The url can either be a local file or a remote turso database.
+    The client used in this example is the synchronous version. The async version can also be used in conjunction with `asyncio`. Learn more [here](https://github.com/tursodatabase/libsql-experimental-python/blob/main/docs/api.md).
+    </Step>
+
+    <Step title="Execute a query using SQL">
+    ```python
+    result_set = client.execute('SELECT * FROM Users')
+    for row in result_set.rows:
+        print(row)
+    ```
+    </Step>
+
+
+
